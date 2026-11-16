@@ -8,6 +8,7 @@
 
         <class>baitapdautien.models.Category</class>
         <class>baitapdautien.models.User</class>
+        <class>baitapdautien.models.Video</class>
 
         <properties>
             <!-- JDBC Database connection settings -->

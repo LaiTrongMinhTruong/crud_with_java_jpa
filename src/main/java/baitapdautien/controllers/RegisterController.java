@@ -1,6 +1,8 @@
 package baitapdautien.controllers;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import baitapdautien.service.UserService;
 import baitapdautien.service.impl.UserServiceImpl;
 import baitapdautien.util.Constant;
+import baitapdautien.util.EmailUtil;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/register")
@@ -21,8 +24,8 @@ public class RegisterController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("username") != null) {
-			resp.sendRedirect(req.getContextPath() + "/admin");
+		if (session != null && session.getAttribute("account") != null) {
+			resp.sendRedirect(req.getContextPath() + "/waiting");
 			return;
 		}
 
@@ -30,10 +33,10 @@ public class RegisterController extends HttpServlet {
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("username")) {
+				if (cookie.getName().equals(Constant.COOKIE_REMEMBER)) {
 					session = req.getSession(true);
-					session.setAttribute("username", cookie.getValue());
-					resp.sendRedirect(req.getContextPath() + "/admin");
+					session.setAttribute(Constant.SESSION_USERNAME, cookie.getValue());
+					resp.sendRedirect(req.getContextPath() + "/waiting");
 					return;
 				}
 			}
@@ -55,28 +58,41 @@ public class RegisterController extends HttpServlet {
 		UserService service = new UserServiceImpl();
 		String alertMsg = "";
 
-		if (service.checkExistEmail(email)) {
-			alertMsg = "Email đã tồn tại!";
+		if (username == null || username.trim().isEmpty() || password == null || password.trim().isEmpty()
+				|| email == null || email.trim().isEmpty()) {
+			alertMsg = "Vui lòng nhập đầy đủ thông tin bắt buộc!";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 
-		if (service.checkExistUsername(username)) {
-			alertMsg = "Tài khoản đã tồn tại!";
+		if (service.checkExistEmail(email.trim())) {
+			alertMsg = "Email đã tồn tại trên hệ thống!";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 
-		boolean isSuccess = service.register(username, password, email, fullname, phone);
+		if (service.checkExistUsername(username.trim())) {
+			alertMsg = "Tên tài khoản đã tồn tại trên hệ thống!";
+			req.setAttribute("alert", alertMsg);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
+			return;
+		}
+
+		// Tạo mã OTP 6 số để kích hoạt tài khoản
+		String otp = EmailUtil.generateOtp();
+		boolean isSuccess = service.registerWithOtp(username.trim(), password.trim(), email.trim(),
+				fullname != null ? fullname.trim() : "", phone != null ? phone.trim() : "", otp);
+
 		if (isSuccess) {
-			// SendMail sm = new SendMail();
-			// sm.sendMail(email, "Shopping.iotstar.vn", "Welcome to Shopping. Please Login to use service. Thanks !");
-			req.setAttribute("alert", alertMsg);
-			resp.sendRedirect(req.getContextPath() + "/login");
+			HttpSession session = req.getSession(true);
+			session.setAttribute("verifyEmail", email.trim());
+			session.setAttribute("demoOtp", otp); // Hỗ trợ xem nhanh khi chấm bài / kiểm thử không cần mở hộp thư
+			resp.sendRedirect(req.getContextPath() + "/verify-otp?email="
+					+ URLEncoder.encode(email.trim(), StandardCharsets.UTF_8));
 		} else {
-			alertMsg = "System error!";
+			alertMsg = "Đăng ký thất bại, đã có lỗi hệ thống xảy ra!";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 		}

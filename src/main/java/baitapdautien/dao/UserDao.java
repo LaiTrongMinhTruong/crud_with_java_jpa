@@ -22,4 +22,10 @@ public interface UserDao {
 	boolean checkExistUsername(String username);
 
 	boolean checkExistPhone(String phone);
+
+	User findByEmail(String email);
+
+	User findByCode(String code);
+
+	User findByUsernameOrEmail(String keyword);
 }

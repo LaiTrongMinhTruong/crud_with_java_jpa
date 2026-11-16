@@ -3,12 +3,17 @@ package baitapdautien.models;
 import java.io.Serializable;
 import java.sql.Date;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -45,6 +50,15 @@ public class User implements Serializable {
 
 	@Column(name = "createddate")
 	private Date createdDate;
+
+	@Column(name = "status")
+	private int status = 1; // 1: Đã kích hoạt, 0: Chờ kích hoạt OTP
+
+	@Column(name = "code", length = 50)
+	private String code; // Mã OTP kích hoạt hoặc đặt lại mật khẩu
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Video> videos;
 
 	public User() {
 		super();
@@ -161,6 +175,30 @@ public class User implements Serializable {
 
 	public void setCreateDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public List<Video> getVideos() {
+		return videos;
+	}
+
+	public void setVideos(List<Video> videos) {
+		this.videos = videos;
 	}
 
 	@Override

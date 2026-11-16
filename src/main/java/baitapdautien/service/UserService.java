@@ -26,4 +26,16 @@ public interface UserService {
 	boolean checkExistUsername(String username);
 
 	boolean checkExistPhone(String phone);
+
+	boolean registerWithOtp(String username, String password, String email, String fullname, String phone, String otp);
+
+	boolean activateAccount(String email, String otp);
+
+	boolean sendResetPasswordOtp(String usernameOrEmail);
+
+	boolean resetPassword(String email, String otp, String newPassword);
+
+	User findByEmail(String email);
+
+	User findByUsernameOrEmail(String keyword);
 }

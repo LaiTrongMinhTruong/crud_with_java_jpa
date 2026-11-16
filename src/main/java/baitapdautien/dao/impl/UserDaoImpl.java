@@ -151,4 +151,46 @@ public class UserDaoImpl implements UserDao {
 			em.close();
 		}
 	}
+
+	@Override
+	public User findByEmail(String email) {
+		EntityManager em = JPAConfig.getEntityManager();
+		try {
+			String jpql = "SELECT u FROM User u WHERE u.email = :email";
+			TypedQuery<User> query = em.createQuery(jpql, User.class);
+			query.setParameter("email", email);
+			List<User> list = query.getResultList();
+			return list.isEmpty() ? null : list.get(0);
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public User findByCode(String code) {
+		EntityManager em = JPAConfig.getEntityManager();
+		try {
+			String jpql = "SELECT u FROM User u WHERE u.code = :code";
+			TypedQuery<User> query = em.createQuery(jpql, User.class);
+			query.setParameter("code", code);
+			List<User> list = query.getResultList();
+			return list.isEmpty() ? null : list.get(0);
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public User findByUsernameOrEmail(String keyword) {
+		EntityManager em = JPAConfig.getEntityManager();
+		try {
+			String jpql = "SELECT u FROM User u WHERE u.userName = :kw OR u.email = :kw";
+			TypedQuery<User> query = em.createQuery(jpql, User.class);
+			query.setParameter("kw", keyword);
+			List<User> list = query.getResultList();
+			return list.isEmpty() ? null : list.get(0);
+		} finally {
+			em.close();
+		}
+	}
 }

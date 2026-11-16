@@ -12,7 +12,10 @@
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
     .login-box { background: #fff; padding: 35px 30px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); width: 100%; max-width: 400px; }
     h2 { text-align: center; color: #555; margin-top: 0; margin-bottom: 25px; font-size: 22px; font-weight: 500; }
-    .alert-danger { color: #a94442; background-color: #f2dede; border: 1px solid #ebccd1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; text-align: center; }
+    .alert { padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; text-align: center; }
+    .alert-danger { color: #a94442; background-color: #f2dede; border: 1px solid #ebccd1; }
+    .alert-success { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; }
+    .alert-warning { color: #856404; background-color: #fff3cd; border: 1px solid #ffeeba; }
     section { margin-bottom: 10px; }
     .input-group { display: flex; align-items: center; margin-bottom: 15px; border: 1px solid #d2d6de; border-radius: 4px; overflow: hidden; background: #fff; transition: border-color .2s; }
     .input-group:focus-within { border-color: #0088cc; }
@@ -31,8 +34,26 @@
 <div class="login-box">
     <h2>Đăng Nhập Vào Hệ Thống</h2>
     
+    <c:if test="${successMessage != null}">
+        <div class="alert alert-success">
+            <i class="fa fa-check-circle"></i> ${successMessage}
+        </div>
+    </c:if>
+
     <c:if test="${alert != null}">
-        <h3 class="alert alert-danger">${alert}</h3>
+        <div class="alert alert-danger">
+            <i class="fa fa-exclamation-circle"></i> ${alert}
+        </div>
+    </c:if>
+
+    <c:if test="${unactivatedEmail != null}">
+        <div class="alert alert-warning" style="text-align: left; font-size: 13px;">
+            <i class="fa fa-shield"></i> Tài khoản của bạn cần xác thực để kích hoạt:
+            <br>
+            <a href="${pageContext.request.contextPath}/verify-otp?email=${unactivatedEmail}" style="display: block; margin-top: 8px; font-weight: bold; color: #856404; text-decoration: underline;">
+                &rarr; Nhập mã OTP kích hoạt tài khoản
+            </a>
+        </div>
     </c:if>
 
     <form action="${pageContext.request.contextPath}/login" method="post">
@@ -40,7 +61,7 @@
             <label class="input login-input" style="display:block;">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" placeholder="Tài khoản" name="username" class="form-control" required>
+                    <input type="text" placeholder="Tài khoản hoặc Email" name="username" class="form-control" required>
                 </div>
             </label>
 
@@ -55,7 +76,7 @@
                 <label>
                     <input type="checkbox" name="remember"> Nhớ tôi
                 </label>
-                <a href="#">Quên mật khẩu?</a>
+                <a href="${pageContext.request.contextPath}/forgot-password">Quên mật khẩu?</a>
             </div>
 
             <button type="submit" class="btn-submit">Đăng nhập</button>
