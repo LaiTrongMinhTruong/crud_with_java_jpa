@@ -43,11 +43,9 @@
         </div>
     </c:if>
 
-    <c:if test="${sessionScope.demoOtp != null}">
-        <div class="alert alert-info" style="font-size: 13px;">
-            <i class="fa fa-info-circle"></i> <strong>Hỗ trợ kiểm thử nhanh:</strong> Mã OTP vừa gửi là <strong style="font-size: 16px; color: #0088cc;">${sessionScope.demoOtp}</strong>
-        </div>
-    </c:if>
+    <div class="alert alert-info" style="font-size: 13px;">
+        <i class="fa fa-info-circle"></i> <strong>Lưu ý:</strong> Vui lòng mở hộp thư Gmail của bạn (kiểm tra cả mục <strong>Hộp thư đến</strong> và <strong>Spam/Thư rác</strong>) để lấy mã xác thực OTP 6 số.
+    </div>
 
     <form action="${pageContext.request.contextPath}/reset-password" method="post">
         <div class="input-group">

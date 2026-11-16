@@ -52,7 +52,6 @@ public class ForgotPasswordController extends HttpServlet {
 
 			HttpSession session = req.getSession(true);
 			session.setAttribute("resetEmail", user.getEmail());
-			session.setAttribute("demoOtp", otp); // Hỗ trợ xem nhanh khi chấm bài
 
 			resp.sendRedirect(req.getContextPath() + "/reset-password?email="
 					+ URLEncoder.encode(user.getEmail(), StandardCharsets.UTF_8));

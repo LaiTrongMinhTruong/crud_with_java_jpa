@@ -55,7 +55,6 @@ public class CategoryEditController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		// Lấy ID an toàn từ nhiều nguồn (request parameter, query string hoặc multipart part)
 		String paramId = req.getParameter("id");
 		if (paramId == null || paramId.trim().isEmpty()) {
 			paramId = req.getParameter("cateid");

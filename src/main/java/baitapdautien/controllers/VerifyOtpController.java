@@ -62,7 +62,6 @@ public class VerifyOtpController extends HttpServlet {
 		if (isActivated) {
 			HttpSession session = req.getSession();
 			session.removeAttribute("verifyEmail");
-			session.removeAttribute("demoOtp");
 			session.setAttribute("successMessage", "Tài khoản của bạn đã được kích hoạt thành công! Hãy đăng nhập ngay.");
 			resp.sendRedirect(req.getContextPath() + "/login?activated=true");
 		} else {
@@ -91,8 +90,6 @@ public class VerifyOtpController extends HttpServlet {
 				EmailUtil.sendActivationOtp(user.getEmail(),
 						user.getFullName() != null ? user.getFullName() : user.getUserName(), newOtp);
 
-				HttpSession session = req.getSession(true);
-				session.setAttribute("demoOtp", newOtp);
 				req.setAttribute("message", "Mã OTP mới đã được gửi lại vào email của bạn!");
 			}
 		}

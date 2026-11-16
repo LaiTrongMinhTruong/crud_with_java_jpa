@@ -63,7 +63,6 @@ public class ResetPasswordController extends HttpServlet {
 			HttpSession session = req.getSession(false);
 			if (session != null) {
 				session.removeAttribute("resetEmail");
-				session.removeAttribute("demoOtp");
 				session.setAttribute("successMessage", "Đổi mật khẩu thành công! Vui lòng đăng nhập với mật khẩu mới.");
 			}
 			resp.sendRedirect(req.getContextPath() + "/login?resetSuccess=true");

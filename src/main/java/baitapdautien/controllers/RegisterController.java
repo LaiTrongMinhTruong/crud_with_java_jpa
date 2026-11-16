@@ -80,7 +80,6 @@ public class RegisterController extends HttpServlet {
 			return;
 		}
 
-		// Tạo mã OTP 6 số để kích hoạt tài khoản
 		String otp = EmailUtil.generateOtp();
 		boolean isSuccess = service.registerWithOtp(username.trim(), password.trim(), email.trim(),
 				fullname != null ? fullname.trim() : "", phone != null ? phone.trim() : "", otp);
@@ -88,11 +87,10 @@ public class RegisterController extends HttpServlet {
 		if (isSuccess) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("verifyEmail", email.trim());
-			session.setAttribute("demoOtp", otp); // Hỗ trợ xem nhanh khi chấm bài / kiểm thử không cần mở hộp thư
 			resp.sendRedirect(req.getContextPath() + "/verify-otp?email="
 					+ URLEncoder.encode(email.trim(), StandardCharsets.UTF_8));
 		} else {
-			alertMsg = "Đăng ký thất bại, đã có lỗi hệ thống xảy ra!";
+			alertMsg = "Đăng ký thất bại hoặc không thể gửi mã OTP qua email! Vui lòng kiểm tra lại địa chỉ email.";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 		}

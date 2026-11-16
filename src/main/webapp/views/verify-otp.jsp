@@ -45,11 +45,9 @@
         <div class="alert alert-success"><i class="fa fa-check-circle"></i> ${message}</div>
     </c:if>
 
-    <c:if test="${sessionScope.demoOtp != null}">
-        <div class="alert alert-info" style="font-size: 13px;">
-            <i class="fa fa-info-circle"></i> <strong>Hỗ trợ kiểm thử nhanh:</strong> Mã OTP vừa tạo là <strong style="font-size: 16px; color: #0088cc;">${sessionScope.demoOtp}</strong> (đã được ghi nhận vào email).
-        </div>
-    </c:if>
+    <div class="alert alert-info" style="font-size: 13px;">
+        <i class="fa fa-info-circle"></i> <strong>Lưu ý:</strong> Vui lòng mở hộp thư Gmail của bạn (kiểm tra cả hộp thư chính, tab Quảng cáo và thư mục <strong>Spam/Thư rác</strong>) để nhận mã OTP gồm 6 chữ số.
+    </div>
 
     <form action="${pageContext.request.contextPath}/verify-otp" method="post">
         <div class="input-group">
