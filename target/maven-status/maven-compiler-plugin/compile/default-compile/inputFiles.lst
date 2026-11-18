@@ -12,6 +12,12 @@
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/RegisterController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/ResetPasswordController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VerifyOtpController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoAddController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoDeleteController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoDetailController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoEditController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VideoListController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/WaitingController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/dao/CategoryDao.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/dao/UserDao.java
@@ -28,6 +34,7 @@
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/service/impl/CategoryServiceImpl.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/service/impl/UserServiceImpl.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/service/impl/VideoServiceImpl.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/util/CloudinaryUtil.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/util/Constant.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/util/EmailUtil.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/util/PasswordUtil.java

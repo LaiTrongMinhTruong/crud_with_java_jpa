@@ -29,4 +29,6 @@ public interface VideoService {
 	void delete(int id);
 
 	void increaseViews(int id);
+
+	List<Video> search(String keyword);
 }

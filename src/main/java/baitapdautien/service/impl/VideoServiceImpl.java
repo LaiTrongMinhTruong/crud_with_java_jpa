@@ -70,4 +70,9 @@ public class VideoServiceImpl implements VideoService {
 	public void increaseViews(int id) {
 		videoDao.increaseViews(id);
 	}
+
+	@Override
+	public List<Video> search(String keyword) {
+		return videoDao.search(keyword);
+	}
 }

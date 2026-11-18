@@ -31,7 +31,7 @@ public class Video implements Serializable {
 	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 
-	@Column(name = "poster", length = 255)
+	@Column(name = "poster", length = 500)
 	private String poster;
 
 	@Column(name = "url", length = 500)

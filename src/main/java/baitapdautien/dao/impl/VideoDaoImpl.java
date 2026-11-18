@@ -196,4 +196,17 @@ public class VideoDaoImpl implements VideoDao {
 			em.close();
 		}
 	}
+
+	@Override
+	public List<Video> search(String keyword) {
+		EntityManager em = JPAConfig.getEntityManager();
+		try {
+			String jpql = "SELECT v FROM Video v WHERE v.title LIKE :kw OR v.description LIKE :kw ORDER BY v.videoId DESC";
+			TypedQuery<Video> query = em.createQuery(jpql, Video.class);
+			query.setParameter("kw", "%" + keyword + "%");
+			return query.getResultList();
+		} finally {
+			em.close();
+		}
+	}
 }
