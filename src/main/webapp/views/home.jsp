@@ -36,7 +36,6 @@
 </style>
 </head>
 <body>
-    <jsp:include page="/views/topbar.jsp" />
 
     <div class="container">
         <c:if test="${sessionScope.account != null}">

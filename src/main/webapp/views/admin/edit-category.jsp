@@ -28,17 +28,20 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 <div class="container">
     <h2>Chỉnh sửa danh mục</h2>
+    <c:if test="${alert != null}">
+        <div class="alert alert-danger">${alert}</div>
+    </c:if>
     <c:url value="/admin/category/edit?id=${category.cateid}" var="editUrl"></c:url>
-    <form role="form" action="${editUrl}" method="post" enctype="multipart/form-data">
+    <form role="form" action="${editUrl}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <input type="hidden" name="id" value="${category.cateid}">
         <input type="hidden" name="cateid" value="${category.cateid}">
 
         <div class="form-group">
             <label>Tên danh mục:</label>
-            <input type="text" class="form-control" value="${category.name}" name="catename" required />
+            <input type="text" class="form-control" value="${category.name}" name="catename" required minlength="2" maxlength="100" />
+            <div class="invalid-feedback">Tên danh mục phải từ 2 đến 100 ký tự.</div>
         </div>
 
         <div class="form-group">

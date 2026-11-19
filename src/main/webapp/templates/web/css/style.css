@@ -1,0 +1,46 @@
+/* Custom Bootstrap 5 Web Theme */
+body {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.topbar-strip {
+    background-color: #1a1f24;
+    color: #adb5bd;
+    font-size: 0.875rem;
+}
+
+.topbar-strip a {
+    color: #e9ecef;
+    text-decoration: none;
+}
+
+.topbar-strip a:hover {
+    color: #0d6efd;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.site-footer {
+    background-color: #212529;
+    color: #adb5bd;
+}
+
+.site-footer a {
+    color: #dee2e6;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}

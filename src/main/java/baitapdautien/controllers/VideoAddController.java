@@ -50,6 +50,14 @@ public class VideoAddController extends HttpServlet {
 		String posterUrl = req.getParameter("posterUrl");
 		String videoUrl = req.getParameter("videoUrl");
 
+		String cleanTitle = title != null ? title.trim() : "";
+		if (cleanTitle.length() < 3 || cleanTitle.length() > 200) {
+			req.setAttribute("title", cleanTitle);
+			req.setAttribute("alert", "Tiêu đề video phải từ 3 đến 200 ký tự!");
+			req.getRequestDispatcher("/views/admin/add-video.jsp").forward(req, resp);
+			return;
+		}
+
 		// 1. Xử lý Upload Poster (Ảnh đại diện thumbnail video)
 		try {
 			Part posterPart = req.getPart("posterFile");

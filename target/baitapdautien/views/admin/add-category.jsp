@@ -27,7 +27,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 <div class="container">
     <h2>Thêm danh mục mới</h2>
     <form role="form" action="<c:url value='/admin/category/add'/>" method="post" enctype="multipart/form-data">

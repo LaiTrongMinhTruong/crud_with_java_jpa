@@ -28,7 +28,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 <div class="container">
     <h2>Chỉnh sửa danh mục</h2>
     <c:url value="/admin/category/edit?id=${category.cateid}" var="editUrl"></c:url>

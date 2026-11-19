@@ -49,8 +49,16 @@ public class CategoryAddController extends HttpServlet {
 			}
 		}
 
+		String cleanName = categoryname != null ? categoryname.trim() : "";
+		if (cleanName.length() < 2 || cleanName.length() > 100) {
+			req.setAttribute("catename", cleanName);
+			req.setAttribute("alert", "Tên danh mục phải từ 2 đến 100 ký tự!");
+			req.getRequestDispatcher("/views/admin/add-category.jsp").forward(req, resp);
+			return;
+		}
+
 		Category category = new Category();
-		category.setCateName(categoryname != null ? categoryname.trim() : "");
+		category.setCateName(cleanName);
 
 		String uploadPath = Constant.UPLOAD_DIRECTORY;
 		File uploadDir = new File(uploadPath);

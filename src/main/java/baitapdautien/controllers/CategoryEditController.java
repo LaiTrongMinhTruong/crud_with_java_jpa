@@ -98,9 +98,18 @@ public class CategoryEditController extends HttpServlet {
 			}
 		}
 
+		String cleanName = categoryname != null ? categoryname.trim() : "";
+		if (cleanName.length() < 2 || cleanName.length() > 100) {
+			Category existing = cateService.findById(categoryid);
+			req.setAttribute("category", existing);
+			req.setAttribute("alert", "Tên danh mục phải từ 2 đến 100 ký tự!");
+			req.getRequestDispatcher("/views/admin/edit-category.jsp").forward(req, resp);
+			return;
+		}
+
 		Category category = new Category();
 		category.setCateId(categoryid);
-		category.setCateName(categoryname != null ? categoryname.trim() : "");
+		category.setCateName(cleanName);
 
 		// Lấy thông tin cũ của category để giữ ảnh nếu người dùng không chọn ảnh mới
 		Category cateold = cateService.findById(categoryid);

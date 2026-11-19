@@ -28,7 +28,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 <div class="container">
     <div class="header-box">
         <h2>Quản lý danh mục</h2>

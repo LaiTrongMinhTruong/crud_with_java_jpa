@@ -27,13 +27,16 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 <div class="container">
     <h2>Thêm danh mục mới</h2>
-    <form role="form" action="<c:url value='/admin/category/add'/>" method="post" enctype="multipart/form-data">
+    <c:if test="${alert != null}">
+        <div class="alert alert-danger">${alert}</div>
+    </c:if>
+    <form role="form" action="<c:url value='/admin/category/add'/>" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="form-group">
             <label>Tên danh mục:</label>
-            <input class="form-control" placeholder="please enter category Name" name="catename" required />
+            <input class="form-control" placeholder="Nhập tên danh mục" name="catename" value="${catename}" required minlength="2" maxlength="100" />
+            <div class="invalid-feedback">Tên danh mục phải từ 2 đến 100 ký tự.</div>
         </div>
         <div class="form-group">
             <label>Ảnh đại diện:</label>

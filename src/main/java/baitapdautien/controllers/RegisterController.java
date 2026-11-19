@@ -58,9 +58,32 @@ public class RegisterController extends HttpServlet {
 		UserService service = new UserServiceImpl();
 		String alertMsg = "";
 
-		if (username == null || username.trim().isEmpty() || password == null || password.trim().isEmpty()
-				|| email == null || email.trim().isEmpty()) {
-			alertMsg = "Vui lòng nhập đầy đủ thông tin bắt buộc!";
+		String u = username != null ? username.trim() : "";
+		String p = password != null ? password.trim() : "";
+		String e = email != null ? email.trim() : "";
+		String f = fullname != null ? fullname.trim() : "";
+		String ph = phone != null ? phone.trim() : "";
+
+		req.setAttribute("username", u);
+		req.setAttribute("fullname", f);
+		req.setAttribute("email", e);
+		req.setAttribute("phone", ph);
+
+		if (u.isEmpty() || p.isEmpty() || e.isEmpty() || f.isEmpty() || ph.isEmpty()) {
+			alertMsg = "Vui lòng nhập đầy đủ tất cả thông tin bắt buộc!";
+		} else if (!u.matches("^[a-zA-Z0-9_]{3,50}$")) {
+			alertMsg = "Tài khoản phải từ 3–50 ký tự và chỉ gồm chữ cái, số, dấu gạch dưới!";
+		} else if (f.length() < 2 || f.length() > 100) {
+			alertMsg = "Họ tên phải từ 2–100 ký tự!";
+		} else if (!e.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+			alertMsg = "Địa chỉ email không đúng định dạng!";
+		} else if (!ph.matches("^0[0-9]{9,10}$")) {
+			alertMsg = "Số điện thoại phải bắt đầu bằng số 0 và gồm 10–11 chữ số!";
+		} else if (p.length() < 6) {
+			alertMsg = "Mật khẩu phải có ít nhất 6 ký tự!";
+		}
+
+		if (!alertMsg.isEmpty()) {
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;

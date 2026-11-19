@@ -33,17 +33,20 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 
 <div class="container">
     <h2><i class="fa fa-pencil-square-o" style="color: #0088cc;"></i> Chỉnh Sửa Video</h2>
+    <c:if test="${alert != null}">
+        <div class="alert alert-danger">${alert}</div>
+    </c:if>
 
-    <form action="<c:url value='/admin/video/edit'/>" method="post" enctype="multipart/form-data">
+    <form action="<c:url value='/admin/video/edit'/>" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <input type="hidden" name="id" value="${video.videoId}" />
 
         <div class="form-group">
             <label>Tiêu đề Video: <span style="color: red;">*</span></label>
-            <input type="text" name="title" value="${video.title}" class="form-control" required autofocus />
+            <input type="text" name="title" value="${video.title}" class="form-control" required minlength="3" maxlength="200" autofocus />
+            <div class="invalid-feedback">Tiêu đề video phải từ 3 đến 200 ký tự.</div>
         </div>
 
         <div class="form-group">

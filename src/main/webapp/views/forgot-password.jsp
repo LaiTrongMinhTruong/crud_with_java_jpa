@@ -41,10 +41,11 @@
         </div>
     </c:if>
 
-    <form action="${pageContext.request.contextPath}/forgot-password" method="post">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" name="account" placeholder="Tên tài khoản hoặc Email" class="form-control" required autofocus>
+    <form action="${pageContext.request.contextPath}/forgot-password" method="post" class="needs-validation" novalidate>
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
+            <input type="text" name="account" value="${account}" placeholder="Tên tài khoản hoặc Email" class="form-control" required minlength="3" autofocus>
+            <div class="invalid-feedback">Vui lòng nhập tên tài khoản hoặc email (tối thiểu 3 ký tự).</div>
         </div>
 
         <button type="submit" class="btn-submit">

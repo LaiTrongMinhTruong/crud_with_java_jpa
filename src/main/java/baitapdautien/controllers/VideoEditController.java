@@ -75,9 +75,13 @@ public class VideoEditController extends HttpServlet {
 		String posterUrl = req.getParameter("posterUrl");
 		String videoUrl = req.getParameter("videoUrl");
 
-		if (title != null && !title.trim().isEmpty()) {
-			video.setTitle(title.trim());
+		if (title == null || title.trim().length() < 3 || title.trim().length() > 200) {
+			req.setAttribute("video", video);
+			req.setAttribute("alert", "Tiêu đề video phải từ 3 đến 200 ký tự!");
+			req.getRequestDispatcher("/views/admin/edit-video.jsp").forward(req, resp);
+			return;
 		}
+		video.setTitle(title.trim());
 		video.setDescription(description != null ? description.trim() : "");
 		video.setActive(active);
 

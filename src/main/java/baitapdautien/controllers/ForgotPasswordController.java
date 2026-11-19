@@ -34,8 +34,9 @@ public class ForgotPasswordController extends HttpServlet {
 
 		String account = req.getParameter("account");
 
-		if (account == null || account.trim().isEmpty()) {
-			req.setAttribute("alert", "Vui lòng nhập tên tài khoản hoặc email của bạn!");
+		if (account == null || account.trim().length() < 3) {
+			req.setAttribute("account", account != null ? account.trim() : "");
+			req.setAttribute("alert", "Vui lòng nhập tên tài khoản hoặc email (tối thiểu 3 ký tự)!");
 			req.getRequestDispatcher("/views/forgot-password.jsp").forward(req, resp);
 			return;
 		}

@@ -31,15 +31,18 @@
 </style>
 </head>
 <body>
-<jsp:include page="/views/topbar.jsp" />
 
 <div class="container">
     <h2><i class="fa fa-cloud-upload" style="color: #0088cc;"></i> Thêm Video Mới</h2>
+    <c:if test="${alert != null}">
+        <div class="alert alert-danger">${alert}</div>
+    </c:if>
 
-    <form action="<c:url value='/admin/video/add'/>" method="post" enctype="multipart/form-data">
+    <form action="<c:url value='/admin/video/add'/>" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="form-group">
             <label>Tiêu đề Video: <span style="color: red;">*</span></label>
-            <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề video..." required autofocus />
+            <input type="text" name="title" value="${title}" class="form-control" placeholder="Nhập tiêu đề video..." required minlength="3" maxlength="200" autofocus />
+            <div class="invalid-feedback">Tiêu đề video phải từ 3 đến 200 ký tự.</div>
         </div>
 
         <div class="form-group">

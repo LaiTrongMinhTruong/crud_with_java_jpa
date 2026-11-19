@@ -33,42 +33,47 @@
         <h3 class="alert alert-danger">${alert}</h3>
     </c:if>
 
-    <form action="${pageContext.request.contextPath}/register" method="post">
+    <form action="${pageContext.request.contextPath}/register" method="post" class="needs-validation" novalidate>
         <section>
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" placeholder="Tài khoản" name="username" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    <input type="text" placeholder="Tài khoản" name="username" value="${username}" class="form-control" required minlength="3" maxlength="50" pattern="^[a-zA-Z0-9_]+$">
+                    <div class="invalid-feedback">Tài khoản từ 3–50 ký tự (chỉ chữ, số, dấu _).</div>
                 </div>
-            </label>
+            </div>
 
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                    <input type="text" placeholder="Họ tên" name="fullname" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    <input type="text" placeholder="Họ tên" name="fullname" value="${fullname}" class="form-control" required minlength="2" maxlength="100">
+                    <div class="invalid-feedback">Vui lòng nhập họ tên (tối thiểu 2 ký tự).</div>
                 </div>
-            </label>
+            </div>
 
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="email" placeholder="Nhập Email" name="email" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    <input type="email" placeholder="Nhập Email" name="email" value="${email}" class="form-control" required>
+                    <div class="invalid-feedback">Vui lòng nhập đúng định dạng email.</div>
                 </div>
-            </label>
+            </div>
 
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input type="text" placeholder="Số điện thoại" name="phone" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                    <input type="text" placeholder="Số điện thoại" name="phone" value="${phone}" class="form-control" required pattern="^0[0-9]{9,10}$">
+                    <div class="invalid-feedback">Số điện thoại phải bắt đầu bằng 0 và gồm 10–11 chữ số.</div>
                 </div>
-            </label>
+            </div>
 
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" placeholder="Mật khẩu" name="password" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    <input type="password" placeholder="Mật khẩu (tối thiểu 6 ký tự)" name="password" class="form-control" required minlength="6">
+                    <div class="invalid-feedback">Mật khẩu phải có ít nhất 6 ký tự.</div>
                 </div>
-            </label>
+            </div>
 
             <button type="submit" class="btn-submit">Tạo tài khoản</button>
         </section>

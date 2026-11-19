@@ -56,21 +56,23 @@
         </div>
     </c:if>
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post" class="needs-validation" novalidate>
         <section>
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" placeholder="Tài khoản hoặc Email" name="username" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    <input type="text" placeholder="Tài khoản hoặc Email" name="username" value="${username}" class="form-control" required minlength="3">
+                    <div class="invalid-feedback">Vui lòng nhập tài khoản hoặc email (tối thiểu 3 ký tự).</div>
                 </div>
-            </label>
+            </div>
 
-            <label class="input login-input" style="display:block;">
+            <div class="mb-3">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" placeholder="Mật khẩu" name="password" class="form-control" required>
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    <input type="password" placeholder="Mật khẩu" name="password" class="form-control" required minlength="3">
+                    <div class="invalid-feedback">Vui lòng nhập mật khẩu (tối thiểu 3 ký tự).</div>
                 </div>
-            </label>
+            </div>
 
             <div class="row-options">
                 <label>

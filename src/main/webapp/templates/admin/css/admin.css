@@ -1,0 +1,59 @@
+/* Custom Bootstrap 5 Admin Theme (SB Admin inspired) */
+body {
+    background-color: #f8f9fc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.admin-sidebar {
+    width: 250px;
+    min-height: calc(100vh - 56px);
+    background: linear-gradient(180deg, #212529 0%, #16191d 100%);
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.admin-sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.78);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.375rem;
+    margin: 0.15rem 0.75rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    color: #fff;
+    background-color: rgba(13, 110, 253, 0.25);
+}
+
+.admin-sidebar .sidebar-heading {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 1rem 1.25rem 0.35rem;
+}
+
+.admin-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+    .admin-wrapper {
+        flex-direction: column;
+    }
+}
