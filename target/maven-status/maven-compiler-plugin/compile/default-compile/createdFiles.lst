@@ -32,6 +32,7 @@ baitapdautien/controllers/VideoController.class
 baitapdautien/controllers/VerifyOtpController.class
 baitapdautien/models/User.class
 baitapdautien/util/PasswordUtil.class
+baitapdautien/controllers/ProfileController.class
 baitapdautien/dao/CategoryDao.class
 baitapdautien/service/impl/VideoServiceImpl.class
 baitapdautien/service/VideoService.class

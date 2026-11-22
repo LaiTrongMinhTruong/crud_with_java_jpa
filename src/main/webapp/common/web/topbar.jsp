@@ -20,6 +20,9 @@
                     <span class="me-3">
                         Xin chào, <strong class="text-info">${sessionScope.account.fullName}</strong>
                     </span>
+                    <a href="${pageContext.request.contextPath}/profile" class="me-3 text-light">
+                        <i class="fa-solid fa-user-pen me-1"></i>Hồ sơ
+                    </a>
                     <a href="${pageContext.request.contextPath}/logout" class="text-danger">
                         <i class="fa-solid fa-right-from-bracket me-1"></i>Đăng xuất
                     </a>

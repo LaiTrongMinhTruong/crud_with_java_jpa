@@ -9,6 +9,7 @@
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/HomeController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/LoginController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/LogoutController.java
+/home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/ProfileController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/RegisterController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/ResetPasswordController.java
 /home/truong/Documents/workspace-spring-tools-for-eclipse-5.4.0.RELEASE/baitapdautien/src/main/java/baitapdautien/controllers/VerifyOtpController.java

@@ -10,6 +10,9 @@
                 <i class="fa-solid fa-user-shield text-info me-1"></i>
                 <strong>${sessionScope.account.fullName}</strong>
             </span>
+            <a href="${pageContext.request.contextPath}/profile" class="btn btn-sm btn-outline-info">
+                <i class="fa-solid fa-user-pen me-1"></i>Hồ sơ
+            </a>
             <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm btn-outline-danger">
                 <i class="fa-solid fa-right-from-bracket me-1"></i>Đăng xuất
             </a>

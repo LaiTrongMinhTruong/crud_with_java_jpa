@@ -184,4 +184,24 @@ public class EmailUtil {
 				+ "</div>";
 		return sendEmail(toEmail, subject, bodyHtml);
 	}
+
+	/**
+	 * Gửi mã OTP xác nhận cập nhật email mới trong trang Profile
+	 */
+	public static boolean sendUpdateEmailOtp(String toEmail, String fullname, String otp) {
+		String subject = "Mã xác nhận thay đổi địa chỉ Email";
+		String bodyHtml = "<div style='font-family: Arial, sans-serif; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; max-width: 520px; margin: auto; background: #ffffff;'>"
+				+ "<div style='text-align: center; margin-bottom: 20px;'>"
+				+ "<h2 style='color: #198754; margin: 0;'>XÁC NHẬN CẬP NHẬT EMAIL</h2>"
+				+ "</div>"
+				+ "<p>Xin chào <strong>" + (fullname != null && !fullname.trim().isEmpty() ? fullname : "Bạn") + "</strong>,</p>"
+				+ "<p>Bạn vừa yêu cầu đổi địa chỉ email tài khoản sang email này. Vui lòng nhập mã OTP dưới đây để hoàn tất cập nhật:</p>"
+				+ "<div style='background: #eefaf3; border: 1px dashed #198754; padding: 18px; text-align: center; font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #198754; border-radius: 8px; margin: 25px 0;'>"
+				+ otp + "</div>"
+				+ "<p style='color: #555; font-size: 13px; line-height: 1.5;'>Lưu ý: Mã OTP này có hiệu lực trong vòng <strong>10 phút</strong>. Nếu bạn không thực hiện yêu cầu này, vui lòng bỏ qua email.</p>"
+				+ "<hr style='border: none; border-top: 1px solid #eee; margin: 25px 0;'>"
+				+ "<p style='font-size: 12px; color: #888; text-align: center; margin: 0;'>Hệ thống Website Java Servlet - Khoa CNTT</p>"
+				+ "</div>";
+		return sendEmail(toEmail, subject, bodyHtml);
+	}
 }
